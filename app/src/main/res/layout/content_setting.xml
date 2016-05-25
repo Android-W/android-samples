@@ -17,22 +17,19 @@
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-        <Button
-            android:id="@+id/bt_installation_toggle"
+        <CheckBox
+            android:id="@+id/cb_push_enable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:enabled="false"
-            android:text="등록"
-            android:textSize="15dp" />
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/tv_installation_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/bt_installation_toggle"
-            android:text="token loading.."
+            android:layout_toLeftOf="@id/cb_push_enable"
+            android:text="Token loading.."
             android:textSize="20dp"
             android:textStyle="bold" />
     </RelativeLayout>

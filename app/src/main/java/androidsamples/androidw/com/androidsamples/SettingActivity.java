@@ -8,34 +8,30 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import butterknife.OnCheckedChanged;
 
 public class SettingActivity extends AppCompatActivity {
 
     @BindView(R.id.tv_installation_status) TextView mTvInstallationStatus;
-    @BindView(R.id.bt_installation_toggle) Button mBtInstallationToggle;
+    @BindView(R.id.cb_push_enable) CheckBox mCbPushEnable;
 
-    private Firebase mFirebase;
-    private String mInstanceId;
-    private String mToken;
+    private DatabaseReference mTokenReference;
 
     private BroadcastReceiver mTokenReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.i("uno", "onReceive " + intent.getAction());
             requestToken();
         }
     };
@@ -57,58 +53,34 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void initFirebase() {
-        Firebase.setAndroidContext(this);
-        mFirebase = new Firebase("https://androidsample.firebaseio.com/token");
-        mInstanceId = FirebaseInstanceId.getInstance().getId();
-        mToken = FirebaseInstanceId.getInstance().getToken();
+        mTokenReference = FirebaseDatabase.getInstance().getReference().child("token");
+        mCbPushEnable.setChecked(PrefUtil.getBoolean(this, Consts.SP_PUSH_ENABLE, true));
     }
 
     private void requestToken() {
-        if (!TextUtils.isEmpty(mInstanceId) && !TextUtils.isEmpty(mToken)) {
-            mFirebase.child(mInstanceId).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() == null || TextUtils.isEmpty(dataSnapshot.getValue().toString())) {
-                        mTvInstallationStatus.setText("Not apply FCM");
-                        mBtInstallationToggle.setText("APPLY");
-                    } else {
-                        mTvInstallationStatus.setText(dataSnapshot.getValue().toString());
-                        mBtInstallationToggle.setText("CANCEL");
+        mTokenReference.child(FirebaseInstanceId.getInstance().getId()).addValueEventListener(new SimpleValueListener() {
+            @Override
+            public void onComplete(DataSnapshot dataSnapshot, DatabaseError databaseError) {
+                mTokenReference.removeEventListener(this);
+                if (databaseError == null) {
+                    if (dataSnapshot.getValue() != null) {
+                        String token = dataSnapshot.getValue(String.class);
+                        if (!TextUtils.isEmpty(token)) {
+                            mTvInstallationStatus.setText(token);
+                        } else {
+                            mTvInstallationStatus.setText("Token is null!");
+                        }
                     }
-
-                    mBtInstallationToggle.setEnabled(true);
+                } else {
+                    ToastUtil.show(SettingActivity.this, databaseError.getMessage());
                 }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
-        } else {
-            mTvInstallationStatus.setText("Token is null.");
-            mBtInstallationToggle.setEnabled(false);
-        }
+            }
+        });
     }
 
-    @OnClick({ R.id.bt_installation_toggle })
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.bt_installation_toggle:
-                String status = mBtInstallationToggle.getText().toString();
-                switch (status) {
-                    case "등록":
-                        User user = new User();
-                        user.name = "test1";
-                        user.token = mToken;
-                        mFirebase.child(mInstanceId).setValue(user);
-                        break;
-
-                    case "해제":
-                        mFirebase.child(mInstanceId).removeValue();
-                        break;
-                }
-                break;
-        }
+    @OnCheckedChanged(R.id.cb_push_enable)
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        PrefUtil.put(this, Consts.SP_PUSH_ENABLE, isChecked);
     }
 
     @Override
