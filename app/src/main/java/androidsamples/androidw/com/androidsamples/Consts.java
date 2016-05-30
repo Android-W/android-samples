@@ -18,4 +18,12 @@ public class Consts {
      */
     public static final String SP_PUSH_ENABLE = "sp_push_enable";
 
+
+    /*
+     * -------------------------------------------------------------------
+     * Realm
+     * -------------------------------------------------------------------
+     */
+    public static final long REALM_SCHEME_VERSION = 2;
+
 }

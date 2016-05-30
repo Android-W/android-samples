@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidsamples.androidw.com.androidsamples.R;
+import androidsamples.androidw.com.androidsamples.realm.RealmActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -97,6 +98,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_realm) {
+            startActivity(new Intent(this, RealmActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
