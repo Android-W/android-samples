@@ -1,7 +1,9 @@
-package androidsamples.androidw.com.androidsamples;
+package androidsamples.androidw.com.androidsamples.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import androidsamples.androidw.com.androidsamples.R;
 
 import static android.content.SharedPreferences.Editor;
 

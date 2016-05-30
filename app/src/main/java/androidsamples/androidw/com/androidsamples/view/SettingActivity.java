@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples;
+package androidsamples.androidw.com.androidsamples.view;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,6 +18,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import androidsamples.androidw.com.androidsamples.Consts;
+import androidsamples.androidw.com.androidsamples.R;
+import androidsamples.androidw.com.androidsamples.firebase.SimpleValueListener;
+import androidsamples.androidw.com.androidsamples.util.PrefUtil;
+import androidsamples.androidw.com.androidsamples.util.ToastUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
@@ -28,7 +33,6 @@ public class SettingActivity extends AppCompatActivity {
     @BindView(R.id.cb_push_enable) CheckBox mCbPushEnable;
 
     private DatabaseReference mTokenReference;
-
     private BroadcastReceiver mTokenReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {

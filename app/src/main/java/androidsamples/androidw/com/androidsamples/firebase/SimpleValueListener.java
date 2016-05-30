@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples;
+package androidsamples.androidw.com.androidsamples.firebase;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,7 +14,6 @@ public abstract class SimpleValueListener implements ValueEventListener {
     @Override
     public void onCancelled(DatabaseError databaseError) {
         onComplete(null, databaseError);
-
     }
 
     public abstract void onComplete(DataSnapshot dataSnapshot, DatabaseError databaseError);

@@ -17,4 +17,5 @@ public class Consts {
      * -------------------------------------------------------------------
      */
     public static final String SP_PUSH_ENABLE = "sp_push_enable";
+
 }

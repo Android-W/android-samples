@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples;
+package androidsamples.androidw.com.androidsamples.firebase;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,6 +14,11 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
+
+import androidsamples.androidw.com.androidsamples.Consts;
+import androidsamples.androidw.com.androidsamples.view.MainActivity;
+import androidsamples.androidw.com.androidsamples.util.PrefUtil;
+import androidsamples.androidw.com.androidsamples.R;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 

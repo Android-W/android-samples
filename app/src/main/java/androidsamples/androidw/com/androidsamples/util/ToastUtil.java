@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples;
+package androidsamples.androidw.com.androidsamples.util;
 
 import android.content.Context;
 import android.os.Handler;

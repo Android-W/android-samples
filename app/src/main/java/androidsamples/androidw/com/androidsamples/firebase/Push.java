@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples;
+package androidsamples.androidw.com.androidsamples.firebase;
 
 import java.util.Map;
 

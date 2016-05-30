@@ -12,6 +12,7 @@ buildscript {
 
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 23
