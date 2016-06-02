@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.widget.CheckBox;
@@ -20,14 +19,14 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 import androidsamples.androidw.com.androidsamples.Consts;
 import androidsamples.androidw.com.androidsamples.R;
+import androidsamples.androidw.com.androidsamples.base.view.BaseActivity;
 import androidsamples.androidw.com.androidsamples.firebase.SimpleValueListener;
 import androidsamples.androidw.com.androidsamples.util.PrefUtil;
 import androidsamples.androidw.com.androidsamples.util.ToastUtil;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 
-public class SettingActivity extends AppCompatActivity {
+public class SettingActivity extends BaseActivity {
 
     @BindView(R.id.tv_installation_status) TextView mTvInstallationStatus;
     @BindView(R.id.cb_push_enable) CheckBox mCbPushEnable;
@@ -44,7 +43,6 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        ButterKnife.bind(this);
 
         initView();
         initFirebase();

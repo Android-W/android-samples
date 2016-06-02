@@ -12,4 +12,79 @@
     tools:context="androidsamples.androidw.com.androidsamples.realm.RealmActivity"
     tools:showIn="@layout/activity_realm">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/tv_log"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/bt_init"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Initialize" />
+
+                <Button
+                    android:id="@+id/bt_find_all_for_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Find all for person" />
+
+                <Button
+                    android:id="@+id/bt_find_all_for_pet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Find all for pet" />
+
+                <Button
+                    android:id="@+id/bt_remove_all_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Remove all person" />
+
+                <Button
+                    android:id="@+id/bt_remove_all_pet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Remove all pet" />
+
+                <Button
+                    android:id="@+id/bt_query_for_pet_age_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Query for pet age less than 3" />
+
+                <Button
+                    android:id="@+id/bt_query_for_pet_age_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Query for pet age greater than 1" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
 </RelativeLayout>

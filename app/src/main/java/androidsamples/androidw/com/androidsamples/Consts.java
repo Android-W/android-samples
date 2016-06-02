@@ -17,6 +17,7 @@ public class Consts {
      * -------------------------------------------------------------------
      */
     public static final String SP_PUSH_ENABLE = "sp_push_enable";
+    public static final String SP_REALM_DEMO_INIT = "sp_realm_demo_init";
 
 
     /*
