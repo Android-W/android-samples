@@ -31,6 +31,10 @@
             android:label="@string/title_activity_realm"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
+        <activity android:name=".view.activity.FlickerActivity"
+            android:label="FlickerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <!-- [START firebase_service] -->
         <service android:name=".firebase.MyFirebaseMessagingService">
             <intent-filter>

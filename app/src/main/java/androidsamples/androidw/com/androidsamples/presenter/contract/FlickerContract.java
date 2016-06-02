@@ -1,5 +1,6 @@
-package androidsamples.androidw.com.androidsamples.presenter;
+package androidsamples.androidw.com.androidsamples.presenter.contract;
 
+import androidsamples.androidw.com.androidsamples.adapter.model.PhotoDataModel;
 import androidsamples.androidw.com.androidsamples.base.presenter.IBasePresenter;
 import androidsamples.androidw.com.androidsamples.base.presenter.view.BaseView;
 
@@ -10,9 +11,13 @@ public class FlickerContract {
 
     public interface View extends BaseView<Presenter> {
 
+        void refresh();
     }
 
     public interface Presenter extends IBasePresenter {
 
+        void setDataModel(PhotoDataModel photoDataModel);
+
+        void loadPhotos(int defaultPage);
     }
 }

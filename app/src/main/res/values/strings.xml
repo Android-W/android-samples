@@ -7,5 +7,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_setting">SettingActivity</string>
     <string name="title_activity_realm">RealmActivity</string>
+    <string name="flicker_example">Flicker example</string>
 
 </resources>

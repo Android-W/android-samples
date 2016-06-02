@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import butterknife.ButterKnife;
-
 /**
  * Created by Tae-hwan on 6/2/16.
  */
@@ -16,6 +14,6 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.bind(this, view);
+//        ButterKnife.bind(this, view);
     }
 }
