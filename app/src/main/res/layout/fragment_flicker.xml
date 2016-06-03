@@ -4,6 +4,6 @@
     android:id="@+id/recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutManager="GridLayoutManager"
-    app:spanCount="2"
+    app:layoutManager="StaggeredGridLayoutManager"
+    app:spanCount="3"
     tools:listitem="@layout/item_photo_view" />

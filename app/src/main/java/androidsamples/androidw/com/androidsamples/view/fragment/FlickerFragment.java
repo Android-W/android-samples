@@ -4,16 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidsamples.androidw.com.androidsamples.R;
 import androidsamples.androidw.com.androidsamples.adapter.PhotoRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.base.view.BaseFragment;
 import androidsamples.androidw.com.androidsamples.presenter.contract.FlickerContract;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
 
@@ -34,16 +31,13 @@ public class FlickerFragment extends BaseFragment implements FlickerContract.Vie
         return new FlickerFragment();
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_flicker, container, false);
-        ButterKnife.bind(this, root);
-        onCreate();
-        return root;
+    protected int getLayoutResource() {
+        return R.layout.fragment_flicker;
     }
 
-    private void onCreate() {
+    @Override
+    protected void onCreateView(View rootView, @Nullable Bundle savedInstanceState) {
         photoRecyclerAdapter = new PhotoRecyclerAdapter(getContext());
         recyclerView.setAdapter(photoRecyclerAdapter);
 
