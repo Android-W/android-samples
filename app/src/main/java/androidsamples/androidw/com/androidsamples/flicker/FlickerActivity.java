@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples.view.activity;
+package androidsamples.androidw.com.androidsamples.flicker;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,10 +6,9 @@ import android.support.annotation.Nullable;
 import androidsamples.androidw.com.androidsamples.R;
 import androidsamples.androidw.com.androidsamples.base.view.BaseActivity;
 import androidsamples.androidw.com.androidsamples.network.RetrofitPhoto;
-import androidsamples.androidw.com.androidsamples.presenter.FlickerPresenter;
-import androidsamples.androidw.com.androidsamples.presenter.contract.FlickerContract;
+import androidsamples.androidw.com.androidsamples.flicker.presenter.FlickerPresenter;
+import androidsamples.androidw.com.androidsamples.flicker.presenter.FlickerContract;
 import androidsamples.androidw.com.androidsamples.util.ActivityUtil;
-import androidsamples.androidw.com.androidsamples.view.fragment.FlickerFragment;
 
 /**
  * Created by Tae-hwan on 6/2/16.

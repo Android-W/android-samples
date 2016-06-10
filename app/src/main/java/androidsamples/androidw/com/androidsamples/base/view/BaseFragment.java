@@ -1,34 +1,33 @@
 package androidsamples.androidw.com.androidsamples.base.view;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Tae-hwan on 6/2/16.
  */
 public abstract class BaseFragment extends Fragment {
 
-    @Nullable
+    private Unbinder unbinder;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(getLayoutResource(), container, false);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.bind(this, rootView);
-
-        onCreateView(rootView, savedInstanceState);
-
-        return rootView;
+        unbinder = ButterKnife.bind(this, view);
     }
 
-    @LayoutRes
-    protected abstract int getLayoutResource();
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
-    protected abstract void onCreateView(View rootView, @Nullable Bundle savedInstanceState);
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
+    }
 }

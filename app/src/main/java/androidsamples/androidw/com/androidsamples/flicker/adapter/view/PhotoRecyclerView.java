@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples.adapter.view;
+package androidsamples.androidw.com.androidsamples.flicker.adapter.view;
 
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import androidsamples.androidw.com.androidsamples.R;
-import androidsamples.androidw.com.androidsamples.adapter.PhotoRecyclerAdapter;
+import androidsamples.androidw.com.androidsamples.flicker.adapter.PhotoRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.base.adapter.view.BaseRecyclerView;
 import androidsamples.androidw.com.androidsamples.listener.OnRecyclerItemClickListener;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
