@@ -7,7 +7,7 @@
 
 ## Requirements
 
-- Target Sdk Version : 23
+- Target Sdk Version : 24
 - Min Sdk Version : 15
 
 ## License
