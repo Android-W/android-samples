@@ -25,6 +25,11 @@ public interface FlickerContract {
 
         void loadPhotos(int defaultPage);
 
+        /**
+         * RX Sample
+         */
+        void rxLoadPhotos(int defaultPage);
+
         void onPhotoItemClick(int position);
     }
 }

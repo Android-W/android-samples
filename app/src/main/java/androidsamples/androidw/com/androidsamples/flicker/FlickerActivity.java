@@ -5,9 +5,8 @@ import android.support.annotation.Nullable;
 
 import androidsamples.androidw.com.androidsamples.R;
 import androidsamples.androidw.com.androidsamples.base.view.BaseActivity;
-import androidsamples.androidw.com.androidsamples.network.RetrofitPhoto;
 import androidsamples.androidw.com.androidsamples.flicker.presenter.FlickerPresenter;
-import androidsamples.androidw.com.androidsamples.flicker.presenter.FlickerContract;
+import androidsamples.androidw.com.androidsamples.network.RetrofitPhoto;
 import androidsamples.androidw.com.androidsamples.util.ActivityUtil;
 
 /**
@@ -15,19 +14,28 @@ import androidsamples.androidw.com.androidsamples.util.ActivityUtil;
  */
 public class FlickerActivity extends BaseActivity {
 
-    private FlickerContract.Presenter presenter;
+    private FlickerPresenter flickerPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flicker);
 
-        FlickerFragment flickerFragment =  (FlickerFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+        FlickerFragment flickerFragment = (FlickerFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
         if (flickerFragment == null) {
             flickerFragment = FlickerFragment.newInstance();
             ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), flickerFragment, R.id.contentFrame);
         }
 
-        presenter = new FlickerPresenter(flickerFragment, RetrofitPhoto.getRetrofitPhoto());
+        flickerPresenter = new FlickerPresenter(flickerFragment, RetrofitPhoto.getRetrofitPhoto());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (flickerPresenter != null) {
+            flickerPresenter.onDestroy();
+        }
     }
 }

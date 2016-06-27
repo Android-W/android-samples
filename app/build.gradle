@@ -15,13 +15,13 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         applicationId "androidsamples.androidw.com.androidsamples"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
@@ -56,11 +56,24 @@ dependencies {
 
     compile 'com.google.code.gson:gson:2.6.2'
 
+    // ButterKnife
+    // http://jakewharton.github.io/butterknife/
     compile "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
     apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
 
     // Network
+    // http://square.github.io/retrofit/
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
-    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
+    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofitVersion"
+    // https://github.com/square/okhttp
+    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
+
+    // RX
+    // https://github.com/ReactiveX/RxAndroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    // https://github.com/artem-zinnatullin/RxJavaProGuardRules
+    compile 'com.artemzin.rxjava:proguard-rules:1.1.6.0'
 }

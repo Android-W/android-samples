@@ -3,6 +3,7 @@ package androidsamples.androidw.com.androidsamples.network;
 import androidsamples.androidw.com.androidsamples.network.bean.RecentPhotoResponse;
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import rx.Observable;
 
 /**
  * Created by Tae-hwan on 6/2/16.
@@ -30,5 +31,9 @@ public class RetrofitPhoto {
 
     public Call<RecentPhotoResponse> getRecentPhoto(int page) {
         return retrofit.create(PhotoServiceInterface.class).getFlickrPhotos(page);
+    }
+
+    public Observable<RecentPhotoResponse> getObservableRecentPhoto(int page) {
+        return retrofit.create(PhotoServiceInterface.class).getObservableFlickrPhotos(page);
     }
 }

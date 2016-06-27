@@ -3,6 +3,7 @@ package androidsamples.androidw.com.androidsamples.network;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -20,6 +21,8 @@ public class RetrofitCreator {
                 .baseUrl("https://api.flickr.com/services/rest/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
+                // Add Retrofit RX.
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }
 }

@@ -9,6 +9,11 @@ import androidsamples.androidw.com.androidsamples.network.bean.RecentPhotoRespon
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Tae-hwan on 6/2/16.
@@ -27,11 +32,6 @@ public class FlickerPresenter extends AbstractPresenter<FlickerContract.View> im
     @Override
     public void setDataModel(PhotoDataModel photoDataModel) {
         this.photoDataModel = photoDataModel;
-    }
-
-    @Override
-    public void start() {
-
     }
 
     @Override
@@ -69,5 +69,48 @@ public class FlickerPresenter extends AbstractPresenter<FlickerContract.View> im
                 getView().showFailLoadImage();
             }
         });
+    }
+
+    // 참고 - http://reactivex.io/documentation/operators/filter.html
+    @Override
+    public void rxLoadPhotos(int page) {
+        Observable<RecentPhotoResponse> photoList = retrofitPhoto.getObservableRecentPhoto(page);
+        photoList
+                .subscribeOn(Schedulers.io())
+                .map(new Func1<RecentPhotoResponse, PhotosPageInfo>() {
+                    @Override
+                    public PhotosPageInfo call(RecentPhotoResponse recentPhotoResponse) {
+                        return recentPhotoResponse.photos;
+                    }
+                })
+                .filter(new Func1<PhotosPageInfo, Boolean>() {
+                    @Override
+                    public Boolean call(PhotosPageInfo photosPageInfo) {
+                        return photosPageInfo != null && photosPageInfo.photo != null && photosPageInfo.photo.size() > 0;
+                    }
+                })
+                .flatMap(new Func1<PhotosPageInfo, Observable<Photo>>() {
+                    @Override
+                    public Observable<Photo> call(PhotosPageInfo photosPageInfo) {
+                        return Observable.from(photosPageInfo.photo);
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Photo>() {
+                    @Override
+                    public void onCompleted() {
+                        getView().refresh();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getView().showFailLoadImage();
+                    }
+
+                    @Override
+                    public void onNext(Photo photo) {
+                        photoDataModel.add(photo);
+                    }
+                });
     }
 }

@@ -5,5 +5,8 @@ package androidsamples.androidw.com.androidsamples.base.presenter;
  */
 public interface BasePresenter {
 
-    void start();
+    /**
+     * View 초기화
+     */
+    void onDestroy();
 }

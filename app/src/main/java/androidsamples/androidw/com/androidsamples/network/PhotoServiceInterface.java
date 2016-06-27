@@ -5,6 +5,7 @@ import androidsamples.androidw.com.androidsamples.network.bean.RecentPhotoRespon
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import rx.Observable;
 
 /**
  * Created by Tae-hwan on 5/3/16.
@@ -12,6 +13,8 @@ import retrofit2.http.Query;
 public interface PhotoServiceInterface {
 
     @GET("?format=json&nojsoncallback=1&method=flickr.interestingness.getList&api_key=" + BuildConfig.FLICKER_API_KEY)
-    Call<RecentPhotoResponse> getFlickrPhotos(
-            @Query("page") int page);
+    Call<RecentPhotoResponse> getFlickrPhotos(@Query("page") int page);
+
+    @GET("?format=json&nojsoncallback=1&method=flickr.interestingness.getList&api_key=" + BuildConfig.FLICKER_API_KEY)
+    Observable<RecentPhotoResponse> getObservableFlickrPhotos(@Query("page") int page);
 }

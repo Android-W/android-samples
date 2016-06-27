@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidsamples.androidw.com.androidsamples.R;
-import androidsamples.androidw.com.androidsamples.flicker.adapter.PhotoRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.base.view.BaseFragment;
+import androidsamples.androidw.com.androidsamples.flicker.adapter.PhotoRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.flicker.presenter.FlickerContract;
 import androidsamples.androidw.com.androidsamples.listener.OnRecyclerItemClickListener;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
@@ -55,7 +55,8 @@ public class FlickerFragment extends BaseFragment implements FlickerContract.Vie
         recyclerView.setAdapter(photoRecyclerAdapter);
 
         presenter.setDataModel(photoRecyclerAdapter);
-        presenter.loadPhotos(DEFAULT_PAGE);
+//        presenter.loadPhotos(DEFAULT_PAGE);
+        presenter.rxLoadPhotos(DEFAULT_PAGE);
     }
 
     @Override
