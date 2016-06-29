@@ -113,4 +113,19 @@ public class FlickerPresenter extends AbstractPresenter<FlickerContract.View> im
                     }
                 });
     }
+
+    // 참고 - http://reactivex.io/documentation/operators/filter.html
+    @Override
+    public void rxLambdaLoadPhotos(int page) {
+        Observable<RecentPhotoResponse> photoList = retrofitPhoto.getObservableRecentPhoto(page);
+        photoList
+                .subscribeOn(Schedulers.io())
+                .map(recentPhotoResponse -> recentPhotoResponse.photos)
+                .filter(photosPageInfo -> photosPageInfo != null && photosPageInfo.photo != null && photosPageInfo.photo.size() > 0)
+                .flatMap(photosPageInfo -> Observable.from(photosPageInfo.photo))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(photo -> photoDataModel.add(photo), // onNext
+                        throwable -> getView().showFailLoadImage(), // onError
+                        () -> getView().refresh()); // onCompleted
+    }
 }

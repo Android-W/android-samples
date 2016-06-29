@@ -56,7 +56,8 @@ public class FlickerFragment extends BaseFragment implements FlickerContract.Vie
 
         presenter.setDataModel(photoRecyclerAdapter);
 //        presenter.loadPhotos(DEFAULT_PAGE);
-        presenter.rxLoadPhotos(DEFAULT_PAGE);
+//        presenter.rxLoadPhotos(DEFAULT_PAGE);
+        presenter.rxLambdaLoadPhotos(DEFAULT_PAGE);
     }
 
     @Override

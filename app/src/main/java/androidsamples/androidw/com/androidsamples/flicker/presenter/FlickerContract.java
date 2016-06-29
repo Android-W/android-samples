@@ -23,12 +23,17 @@ public interface FlickerContract {
 
         void setDataModel(PhotoDataModel photoDataModel);
 
-        void loadPhotos(int defaultPage);
+        void loadPhotos(int page);
 
         /**
-         * RX Sample
+         * RxJava Sample
          */
-        void rxLoadPhotos(int defaultPage);
+        void rxLoadPhotos(int page);
+
+        /**
+         * RxJava, Lambda
+         */
+        void rxLambdaLoadPhotos(int page);
 
         void onPhotoItemClick(int position);
     }
