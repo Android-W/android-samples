@@ -8,13 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidsamples.androidw.com.androidsamples.base.BaseItem;
 import androidsamples.androidw.com.androidsamples.base.adapter.BaseRecyclerAdapter;
 import butterknife.ButterKnife;
 
 /**
  * Created by Tae-hwan on 4/26/16.
  */
-public abstract class BaseRecyclerView<AD extends BaseRecyclerAdapter, T> extends RecyclerView.ViewHolder {
+public abstract class BaseRecyclerView<AD extends BaseRecyclerAdapter, T extends BaseItem> extends RecyclerView.ViewHolder {
 
     private AD adapter;
 

@@ -1,15 +1,14 @@
 package androidsamples.androidw.com.androidsamples.flicker.adapter.view;
 
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
 import androidsamples.androidw.com.androidsamples.R;
-import androidsamples.androidw.com.androidsamples.flicker.adapter.PhotoRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.base.adapter.view.BaseRecyclerView;
+import androidsamples.androidw.com.androidsamples.flicker.adapter.PhotoRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.listener.OnRecyclerItemClickListener;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
 import butterknife.BindView;
@@ -40,12 +39,9 @@ public class PhotoRecyclerView extends BaseRecyclerView<PhotoRecyclerAdapter, Ph
                     .crossFade()
                     .into(imageView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onRecyclerItemClickListener != null) {
-                        onRecyclerItemClickListener.onItemClick(position);
-                    }
+            itemView.setOnClickListener(v -> {
+                if (onRecyclerItemClickListener != null) {
+                    onRecyclerItemClickListener.onItemClick(position);
                 }
             });
         }

@@ -13,7 +13,6 @@ import androidsamples.androidw.com.androidsamples.R;
 import androidsamples.androidw.com.androidsamples.base.view.BaseFragment;
 import androidsamples.androidw.com.androidsamples.flicker.adapter.PhotoRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.flicker.presenter.FlickerContract;
-import androidsamples.androidw.com.androidsamples.listener.OnRecyclerItemClickListener;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
 import butterknife.BindView;
 
@@ -46,12 +45,7 @@ public class FlickerFragment extends BaseFragment implements FlickerContract.Vie
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         photoRecyclerAdapter = new PhotoRecyclerAdapter(getContext());
-        photoRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                presenter.onPhotoItemClick(position);
-            }
-        });
+        photoRecyclerAdapter.setOnRecyclerItemClickListener(position -> presenter.onPhotoItemClick(position));
         recyclerView.setAdapter(photoRecyclerAdapter);
 
         presenter.setDataModel(photoRecyclerAdapter);
@@ -87,6 +81,6 @@ public class FlickerFragment extends BaseFragment implements FlickerContract.Vie
 
     @Override
     public void showBottomSheet(Photo photo) {
-
+        Toast.makeText(getContext(), "Show blur Dialog?", Toast.LENGTH_SHORT).show();
     }
 }

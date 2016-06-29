@@ -3,10 +3,10 @@ package androidsamples.androidw.com.androidsamples.flicker.adapter;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import androidsamples.androidw.com.androidsamples.flicker.adapter.model.PhotoDataModel;
-import androidsamples.androidw.com.androidsamples.flicker.adapter.view.PhotoRecyclerView;
 import androidsamples.androidw.com.androidsamples.base.adapter.BaseRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.base.adapter.view.BaseRecyclerView;
+import androidsamples.androidw.com.androidsamples.flicker.adapter.model.PhotoDataModel;
+import androidsamples.androidw.com.androidsamples.flicker.adapter.view.PhotoRecyclerView;
 import androidsamples.androidw.com.androidsamples.listener.OnRecyclerItemClickListener;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
 
@@ -14,6 +14,12 @@ import androidsamples.androidw.com.androidsamples.network.bean.Photo;
  * Created by Tae-hwan on 5/3/16.
  */
 public class PhotoRecyclerAdapter extends BaseRecyclerAdapter<Photo> implements PhotoDataModel {
+
+    public static final int VIEW_TYPE_PHOTO = 1;
+
+    public static final int VIEW_TYPE_EMPTY = 999;
+    public static final int VIEW_TYPE_LOADING = 1000;
+
 
     private OnRecyclerItemClickListener onRecyclerItemClickListener;
 
@@ -27,17 +33,22 @@ public class PhotoRecyclerAdapter extends BaseRecyclerAdapter<Photo> implements 
 
     @Override
     public BaseRecyclerView onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new PhotoRecyclerView(parent, this, onRecyclerItemClickListener);
-    }
+        switch (viewType) {
+            case VIEW_TYPE_PHOTO:
+                return new PhotoRecyclerView(parent, this, onRecyclerItemClickListener);
 
-    @Override
-    public void add(Photo photo) {
-        addItem(photo);
+            default:
+                break;
+        }
+        return null;
     }
 
     @Override
     public void add(Photo photo, boolean isNotify) {
-        addItem(photo, isNotify);
+        if (photo != null) {
+            photo.viewType = VIEW_TYPE_PHOTO;
+            addItem(photo, isNotify);
+        }
     }
 
     @Override

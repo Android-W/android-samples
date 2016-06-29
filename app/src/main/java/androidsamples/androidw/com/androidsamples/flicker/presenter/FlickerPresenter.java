@@ -109,7 +109,7 @@ public class FlickerPresenter extends AbstractPresenter<FlickerContract.View> im
 
                     @Override
                     public void onNext(Photo photo) {
-                        photoDataModel.add(photo);
+                        photoDataModel.add(photo, false);
                     }
                 });
     }
@@ -124,7 +124,7 @@ public class FlickerPresenter extends AbstractPresenter<FlickerContract.View> im
                 .filter(photosPageInfo -> photosPageInfo != null && photosPageInfo.photo != null && photosPageInfo.photo.size() > 0)
                 .flatMap(photosPageInfo -> Observable.from(photosPageInfo.photo))
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(photo -> photoDataModel.add(photo), // onNext
+                .subscribe(photo -> photoDataModel.add(photo, false), // onNext
                         throwable -> getView().showFailLoadImage(), // onError
                         () -> getView().refresh()); // onCompleted
     }

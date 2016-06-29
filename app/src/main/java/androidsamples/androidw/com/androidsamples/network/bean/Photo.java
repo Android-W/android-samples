@@ -1,6 +1,8 @@
 package androidsamples.androidw.com.androidsamples.network.bean;
 
-public class Photo {
+import androidsamples.androidw.com.androidsamples.base.BaseItem;
+
+public class Photo extends BaseItem {
 
     public String id;
     public String owner;

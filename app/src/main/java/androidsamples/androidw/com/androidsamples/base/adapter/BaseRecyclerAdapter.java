@@ -7,13 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidsamples.androidw.com.androidsamples.base.BaseItem;
 import androidsamples.androidw.com.androidsamples.base.adapter.view.BaseRecyclerView;
 
 
 /**
  * Created by Tae-hwan on 4/26/16.
  */
-public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerView>  {
+public abstract class BaseRecyclerAdapter<T extends BaseItem> extends RecyclerView.Adapter<BaseRecyclerView>  {
 
     private Context context;
 
@@ -29,6 +30,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         if (holder != null) {
             holder.onViewHolder(getItem(position), position);
         }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        T item = getItem(position);
+        return item != null ? item.viewType : super.getItemViewType(position);
     }
 
     @Nullable

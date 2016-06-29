@@ -7,8 +7,6 @@ import androidsamples.androidw.com.androidsamples.network.bean.Photo;
  */
 public interface PhotoDataModel {
 
-    void add(Photo photo);
-
     void add(Photo photo, boolean isNotify);
 
     void remove(int position);
