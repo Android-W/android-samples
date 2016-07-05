@@ -16,7 +16,7 @@ import android.view.View;
 import androidsamples.androidw.com.androidsamples.R;
 import androidsamples.androidw.com.androidsamples.base.view.BaseActivity;
 import androidsamples.androidw.com.androidsamples.realm.RealmActivity;
-import androidsamples.androidw.com.androidsamples.flicker.FlickerActivity;
+import androidsamples.androidw.com.androidsamples.view.flicker.FlickerActivity;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity

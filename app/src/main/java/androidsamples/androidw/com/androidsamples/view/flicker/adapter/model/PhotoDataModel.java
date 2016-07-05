@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples.flicker.adapter.model;
+package androidsamples.androidw.com.androidsamples.view.flicker.adapter.model;
 
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
 

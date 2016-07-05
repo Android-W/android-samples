@@ -1,7 +1,13 @@
-package androidsamples.androidw.com.androidsamples.flicker.presenter;
+package androidsamples.androidw.com.androidsamples.view.flicker.presenter;
+
+import android.text.TextUtils;
+import android.util.Log;
+
+import java.util.Arrays;
+import java.util.List;
 
 import androidsamples.androidw.com.androidsamples.base.presenter.AbstractPresenter;
-import androidsamples.androidw.com.androidsamples.flicker.adapter.model.PhotoDataModel;
+import androidsamples.androidw.com.androidsamples.view.flicker.adapter.model.PhotoDataModel;
 import androidsamples.androidw.com.androidsamples.network.RetrofitPhoto;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
 import androidsamples.androidw.com.androidsamples.network.bean.PhotosPageInfo;
@@ -127,5 +133,22 @@ public class FlickerPresenter extends AbstractPresenter<FlickerContract.View> im
                 .subscribe(photo -> photoDataModel.add(photo, false), // onNext
                         throwable -> getView().showFailLoadImage(), // onError
                         () -> getView().refresh()); // onCompleted
+
+
+//        List<String> test = Arrays.asList("a", "b", null, "c", "d");
+//        test
+//                .stream()
+//                .filter(item -> !TextUtils.isEmpty(item))
+//                .map(String::toUpperCase)
+//                .sorted()
+//                .forEach(System.out::println);
+
+        Observable<String> observableTest = Observable.just("a", "b", null, "c", "d");
+        observableTest
+                .subscribeOn(Schedulers.newThread())
+                .filter(item -> !TextUtils.isEmpty(item))
+                .map(String::toUpperCase)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item -> Log.e("TAG", item));
     }
 }

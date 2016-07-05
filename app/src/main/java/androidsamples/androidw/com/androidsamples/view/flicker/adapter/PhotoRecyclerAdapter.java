@@ -1,14 +1,14 @@
-package androidsamples.androidw.com.androidsamples.flicker.adapter;
+package androidsamples.androidw.com.androidsamples.view.flicker.adapter;
 
 import android.content.Context;
 import android.view.ViewGroup;
 
 import androidsamples.androidw.com.androidsamples.base.adapter.BaseRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.base.adapter.view.BaseRecyclerView;
-import androidsamples.androidw.com.androidsamples.flicker.adapter.model.PhotoDataModel;
-import androidsamples.androidw.com.androidsamples.flicker.adapter.view.PhotoRecyclerView;
 import androidsamples.androidw.com.androidsamples.listener.OnRecyclerItemClickListener;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
+import androidsamples.androidw.com.androidsamples.view.flicker.adapter.model.PhotoDataModel;
+import androidsamples.androidw.com.androidsamples.view.flicker.adapter.view.PhotoRecyclerView;
 
 /**
  * Created by Tae-hwan on 5/3/16.

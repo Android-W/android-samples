@@ -1,11 +1,11 @@
-package androidsamples.androidw.com.androidsamples.flicker;
+package androidsamples.androidw.com.androidsamples.view.flicker;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import androidsamples.androidw.com.androidsamples.R;
 import androidsamples.androidw.com.androidsamples.base.view.BaseActivity;
-import androidsamples.androidw.com.androidsamples.flicker.presenter.FlickerPresenter;
+import androidsamples.androidw.com.androidsamples.view.flicker.presenter.FlickerPresenter;
 import androidsamples.androidw.com.androidsamples.network.RetrofitPhoto;
 import androidsamples.androidw.com.androidsamples.util.ActivityUtil;
 

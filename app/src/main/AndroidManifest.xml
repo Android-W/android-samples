@@ -31,7 +31,7 @@
             android:label="@string/title_activity_realm"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name=".flicker.FlickerActivity"
+        <activity android:name=".view.flicker.FlickerActivity"
             android:label="FlickerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 

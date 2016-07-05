@@ -1,6 +1,6 @@
-package androidsamples.androidw.com.androidsamples.flicker.presenter;
+package androidsamples.androidw.com.androidsamples.view.flicker.presenter;
 
-import androidsamples.androidw.com.androidsamples.flicker.adapter.model.PhotoDataModel;
+import androidsamples.androidw.com.androidsamples.view.flicker.adapter.model.PhotoDataModel;
 import androidsamples.androidw.com.androidsamples.base.presenter.BasePresenter;
 import androidsamples.androidw.com.androidsamples.base.presenter.BaseView;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;

@@ -15,11 +15,11 @@ import butterknife.ButterKnife;
 /**
  * Created by Tae-hwan on 4/26/16.
  */
-public abstract class BaseRecyclerView<AD extends BaseRecyclerAdapter, T extends BaseItem> extends RecyclerView.ViewHolder {
+public abstract class BaseRecyclerView<T extends BaseItem> extends RecyclerView.ViewHolder {
 
-    private AD adapter;
+    private BaseRecyclerAdapter adapter;
 
-    public BaseRecyclerView(AD adapter, View itemView) {
+    public BaseRecyclerView(BaseRecyclerAdapter adapter, View itemView) {
         super(itemView);
 
         this.adapter = adapter;
@@ -27,13 +27,13 @@ public abstract class BaseRecyclerView<AD extends BaseRecyclerAdapter, T extends
         ButterKnife.bind(this, itemView);
     }
 
-    public BaseRecyclerView(@LayoutRes int layoutRes, ViewGroup parent, AD adapter) {
+    public BaseRecyclerView(@LayoutRes int layoutRes, ViewGroup parent, BaseRecyclerAdapter adapter) {
         this(adapter, LayoutInflater.from(adapter.getContext()).inflate(layoutRes, parent, false));
     }
 
     public abstract void onViewHolder(final @Nullable T item, int position);
 
-    protected AD getAdapter() {
+    protected BaseRecyclerAdapter getAdapter() {
         return adapter;
     }
 

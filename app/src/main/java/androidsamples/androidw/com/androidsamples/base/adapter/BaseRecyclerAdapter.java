@@ -35,7 +35,7 @@ public abstract class BaseRecyclerAdapter<T extends BaseItem> extends RecyclerVi
     @Override
     public int getItemViewType(int position) {
         T item = getItem(position);
-        return item != null ? item.viewType : super.getItemViewType(position);
+        return item != null ? item.getViewType() : super.getItemViewType(position);
     }
 
     @Nullable

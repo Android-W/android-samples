@@ -1,4 +1,4 @@
-package androidsamples.androidw.com.androidsamples.flicker.adapter.view;
+package androidsamples.androidw.com.androidsamples.view.flicker.adapter.view;
 
 import android.support.annotation.Nullable;
 import android.view.ViewGroup;
@@ -7,8 +7,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import androidsamples.androidw.com.androidsamples.R;
+import androidsamples.androidw.com.androidsamples.base.adapter.BaseRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.base.adapter.view.BaseRecyclerView;
-import androidsamples.androidw.com.androidsamples.flicker.adapter.PhotoRecyclerAdapter;
 import androidsamples.androidw.com.androidsamples.listener.OnRecyclerItemClickListener;
 import androidsamples.androidw.com.androidsamples.network.bean.Photo;
 import butterknife.BindView;
@@ -16,14 +16,14 @@ import butterknife.BindView;
 /**
  * Created by Tae-hwan on 5/3/16.
  */
-public class PhotoRecyclerView extends BaseRecyclerView<PhotoRecyclerAdapter, Photo> {
+public class PhotoRecyclerView extends BaseRecyclerView<Photo> {
 
     @BindView(R.id.image)
     ImageView imageView;
 
     private OnRecyclerItemClickListener onRecyclerItemClickListener;
 
-    public PhotoRecyclerView(ViewGroup parent, PhotoRecyclerAdapter adapter, OnRecyclerItemClickListener onRecyclerItemClickListener) {
+    public PhotoRecyclerView(ViewGroup parent, BaseRecyclerAdapter adapter, OnRecyclerItemClickListener onRecyclerItemClickListener) {
         super(R.layout.item_photo_view, parent, adapter);
 
         this.onRecyclerItemClickListener = onRecyclerItemClickListener;
